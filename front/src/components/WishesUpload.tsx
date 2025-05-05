@@ -178,21 +178,19 @@ const WishesUpload = () => {
         formData.append('media', mediaFile);
       }
   
-      const response = await fetch('http://localhost:5000/api/wishes', {
+      /*const response = await fetch('http://localhost:5000/api/wishes', {
         method: 'POST',
         body: formData,
+      });*/
+      await uploadWishes({
+        name,
+        wish,
+        mediaType,
+        mediaFile
       });
+      
   
-      if (response.ok) {
-        toast.success('Your wish has been submitted successfully!');
-        setName('');
-        setWish('');
-        setMediaFile(null);
-        await loadWishes();
-
-      } else {
-        toast.error('Server error. Please try again.');
-      }
+     
     } catch (err) {
       toast.error('Server error. Please try again.');
     } finally {
@@ -316,7 +314,7 @@ const WishesUpload = () => {
     {item.mediaType === 'photo' ? (
       <>
         <img
-          src={`http://localhost:5000${item.mediaUrl}`}
+          src={`https://arabian-nights-backend-1t2e.onrender.com${item.mediaUrl}`}
           alt="wish media"
           className="rounded max-h-48 w-full object-cover"
         />
@@ -324,7 +322,7 @@ const WishesUpload = () => {
   href="#"
   onClick={(e) => {
     e.preventDefault();
-    downloadFile(`http://localhost:5000${item.mediaUrl}`);
+    downloadFile(`https://arabian-nights-backend-1t2e.onrender.com${item.mediaUrl}`);
   }}
   className="btn btn-primary inline-block px-4 py-2 bg-festival-blue text-white rounded hover:bg-festival-gold transition"
 >
@@ -335,7 +333,7 @@ const WishesUpload = () => {
     ) : item.mediaType === 'video' ? (
       <>
         <video
-          src={`http://localhost:5000${item.mediaUrl}`}
+          src={`https://arabian-nights-backend-1t2e.onrender.com${item.mediaUrl}`}
           controls
           className="rounded max-h-64 w-full object-cover"
         />
@@ -343,7 +341,7 @@ const WishesUpload = () => {
   href="#"
   onClick={(e) => {
     e.preventDefault();
-    downloadFile(`http://localhost:5000${item.mediaUrl}`);
+    downloadFile(`https://arabian-nights-backend-1t2e.onrender.com${item.mediaUrl}`);
   }}
   className="btn btn-primary inline-block px-4 py-2 bg-festival-blue text-white rounded hover:bg-festival-gold transition"
 >

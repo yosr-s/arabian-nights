@@ -8,6 +8,7 @@ import api from '@/lib/api';
  * @param {string|null} [payload.mediaType]
  * @param {string|null} [payload.mediaUrl]
  */
+/*
 export const uploadWishes = async ({ name, wish, mediaType = null, mediaUrl = null }) => {
   try {
     const response = await api.post('/wishes', {
@@ -22,7 +23,30 @@ export const uploadWishes = async ({ name, wish, mediaType = null, mediaUrl = nu
     console.error('Error uploading wish:', error);
     throw error;
   }
+};*/
+export const uploadWishes = async ({ name, wish, mediaType, mediaFile }) => {
+  try {
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('wish', wish || '');
+    formData.append('mediaType', mediaFile ? mediaType : '');
+    if (mediaFile) {
+      formData.append('media', mediaFile); // backend expects `req.file`
+    }
+
+    const response = await api.post('/wishes', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error uploading wish:', error);
+    throw error;
+  }
 };
+
 
 /**
  * Récupère tous les souhaits depuis l'API backend
