@@ -9,6 +9,7 @@ import WishesUpload from '@/components/WishesUpload';
 import PhotoUpload from '@/components/PhotoUpload';
 import Gallery from '@/components/Gallery';
 import Footer from '@/components/Footer';
+import Support from '@/components/Support';
 
 const Index = () => {
   const [refreshGallery, setRefreshGallery] = useState(false);
@@ -31,6 +32,7 @@ const Index = () => {
         <WishesUpload />
         <PhotoUpload onUploadSuccess={handleUploadSuccess} />
         <Gallery refresh={refreshGallery} />
+        <Support/>
         <Footer />
       </div>
     </AnimatePresence>

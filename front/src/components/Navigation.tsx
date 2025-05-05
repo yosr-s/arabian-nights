@@ -31,6 +31,8 @@ const Navigation = () => {
           <a href="#location" className="text-white hover:text-festival-gold transition-colors">Location</a>
           <a href="#wishes" className="text-white hover:text-festival-gold transition-colors">Wishes</a>
           <a href="#gallery" className="text-white hover:text-festival-gold transition-colors">Gallery</a>
+          <a href="#support" className="text-white hover:text-festival-gold transition-colors">Support</a>
+
         </div>
         
         <div className="md:hidden">
@@ -50,6 +52,8 @@ const Navigation = () => {
           <a href="#location" className="block text-white hover:text-festival-gold">Location</a>
           <a href="#wishes" className="block text-white hover:text-festival-gold">Wishes</a>
           <a href="#gallery" className="block text-white hover:text-festival-gold">Gallery</a>
+          <a href="#support" className="block text-white hover:text-festival-gold">Support</a>
+
         </div>
       )}
     </nav>
