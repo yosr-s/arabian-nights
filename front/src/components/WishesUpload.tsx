@@ -188,7 +188,14 @@ const WishesUpload = () => {
         mediaType,
         mediaFile
       });
-      
+      toast.success('Your wish has been submitted successfully!');
+
+    // Reset form
+    setName('');
+    setWish('');
+    setMediaFile(null);
+    await loadWishes();
+
   
      
     } catch (err) {
