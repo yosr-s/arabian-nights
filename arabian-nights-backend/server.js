@@ -8,11 +8,7 @@ const wishRoutes = require('./routes/wishRoutes');
 const app = express();
 
 // Middleware
-app.use(cors(
-  {     origin: ["https://deploy-mern-1whq.vercel.app"],
-        methods: ["GET", "POST", "PATCH", "DELETE"], 
-        credentials: true,   }
-));
+app.use(cors());
 app.use(express.json());
 //app.use('/uploads', express.static('uploads'));
 const path = require('path');
