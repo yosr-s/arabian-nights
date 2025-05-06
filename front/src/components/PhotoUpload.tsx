@@ -263,7 +263,8 @@ const PhotoUpload = ({ onUploadSuccess }) => {
 
         <div className="flex justify-center">
           <a 
-            href="https://drive.google.com/drive/folders/1d8srPZYdCzdN3ZzsKNaPVyeEuHZcDPvW?usp=drive_link"
+            //href="https://drive.google.com/drive/folders/1d8srPZYdCzdN3ZzsKNaPVyeEuHZcDPvW?usp=drive_link"
+                       href="https://www.dropbox.com/request/6rOfd6MDlggWbzlY76zZ"
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer bg-festival-gold hover:bg-festival-gold/80 text-festival-blue font-medium px-5 py-2 rounded-md"
