@@ -52,6 +52,7 @@ const Gallery = ({ refresh }) => {
       try {
         const items = await fetchGalleryMedia();
         setGalleryItems(items);
+        console.log("urls from display=",items)
       } catch (error) {
         console.error('Erreur lors du chargement de la galerie :', error);
       }
@@ -144,6 +145,7 @@ return (
       const index = filteredItems.findIndex(i => i._id === item._id);
       setSelectedIndex(index);
       setSelectedItem(item);
+      //console.log("urls from display=",item.mediaUrl)
     }}
       >
     {item.mediaType === 'photo' ? (

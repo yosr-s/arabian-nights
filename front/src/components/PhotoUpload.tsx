@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
-import { uploadGalleryMedia } from '@/services/galleryService';
+import { uploadGalleryMedia, uploadToCloudinary } from '@/services/galleryService';
 
 
 const PhotoUpload = ({ onUploadSuccess }) => {
@@ -75,7 +75,7 @@ const PhotoUpload = ({ onUploadSuccess }) => {
     setImages(newImages);
     setPreviews(newPreviews);
   };
-  
+ /* 
   const handleUpload = async () => {
     if (images.length === 0) {
       toast.error('Veuillez ajouter au moins une image à uploader');
@@ -104,6 +104,41 @@ const PhotoUpload = ({ onUploadSuccess }) => {
       setUploading(false);
     }
   };
+  */
+  const handleUpload = async () => {
+    if (images.length === 0) {
+      toast.error('Veuillez ajouter au moins une image à uploader');
+      return;
+    }
+  
+    const formData = new FormData();
+    images.forEach((file) => formData.append('media', file));
+  
+    setUploading(true);
+  
+    try {
+      // Étape 1 : upload vers Cloudinary
+      const urls = await uploadToCloudinary(formData);
+      console.log("url=",urls)
+  
+      // Étape 2 : envoi des URLs au backend pour enregistrement
+      await uploadGalleryMedia(urls); // envoie simplement le tableau d'URLs
+
+  
+      toast.success('Vos photos ont été envoyées avec succès !');
+  
+      previews.forEach(preview => URL.revokeObjectURL(preview));
+      setImages([]);
+      setPreviews([]);
+      if (onUploadSuccess) onUploadSuccess();
+  
+    } catch (error) {
+      toast.error('Erreur lors de l’envoi. Réessayez.');
+    } finally {
+      setUploading(false);
+    }
+  };
+  
   
   
   return (

@@ -68,69 +68,7 @@ const WishesUpload = () => {
     }
   };
   
-  // Sample wishes data (this would come from Supabase in a real implementation)
-  const sampleWishes = [
-    {
-      id: 1,
-      name: 'Ahmed Khalid',
-      wish: 'Wishing everyone at the Arabian Night festival an amazing time! May this celebration bring joy and create memories that last a lifetime.',
-      mediaType: 'photo',
-      mediaUrl: null,
-      avatar: 'AK',
-      avatarColor: 'bg-festival-blue',
-      timestamp: '2 hours ago'
-    },
-    {
-      id: 2,
-      name: 'Layla Samir',
-      wish: 'This event is always magical! Looking forward to dancing under the stars again and experiencing the amazing hospitality. See you all there!',
-      mediaType: null,
-      mediaUrl: null,
-      avatar: 'LS',
-      avatarColor: 'bg-festival-orange',
-      timestamp: '5 hours ago'
-    },
-    {
-      id: 3,
-      name: 'Mohammed Hassan',
-      wish: 'Cannot wait for the delicious food and amazing performances! The Arabian Night festival gets better every year.',
-      mediaType: 'video',
-      mediaUrl: null,
-      avatar: 'MH',
-      avatarColor: 'bg-festival-gold',
-      timestamp: '1 day ago'
-    },
-    {
-      id: 4,
-      name: 'Fatima Zahra',
-      wish: 'Looking forward to the traditional dances and music. The atmosphere is always electric!',
-      mediaType: 'photo',
-      mediaUrl: null,
-      avatar: 'FZ',
-      avatarColor: 'bg-festival-navy',
-      timestamp: '1 day ago'
-    },
-    {
-      id: 5,
-      name: 'Omar Farooq',
-      wish: 'I attended last year and it was incredible. The hospitality, food, and entertainment were all outstanding!',
-      mediaType: null,
-      mediaUrl: null,
-      avatar: 'OF',
-      avatarColor: 'bg-emerald-600',
-      timestamp: '2 days ago'
-    },
-    {
-      id: 6,
-      name: 'Aisha Malik',
-      wish: 'The Arabian Night festival is a highlight of my year. The atmosphere is magical and I always leave with wonderful memories.',
-      mediaType: 'photo',
-      mediaUrl: null,
-      avatar: 'AM',
-      avatarColor: 'bg-purple-600',
-      timestamp: '2 days ago'
-    }
-  ];
+ 
   
   // Calculate pagination
   const totalPages = Math.ceil(wishes.length / itemsPerPage);
