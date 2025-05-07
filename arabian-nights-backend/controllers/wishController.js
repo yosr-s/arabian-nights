@@ -1,5 +1,7 @@
 const Wish = require('../models/Wish');
 
+//! upload physic media
+/*
 exports.createWish = async (req, res) => {
     try {
       const { name, wish, mediaType } = req.body;
@@ -23,6 +25,25 @@ exports.createWish = async (req, res) => {
       res.status(500).json({ error: 'Erreur serveur lors de l\'enregistrement du souhait' });
     }
   };
+  */
+//! upload only urls
+exports.createWish = async (req, res) => {
+  try {
+    const { name, wish, mediaType, mediaUrl } = req.body;
+
+    if (!name || (!wish && !mediaUrl)) {
+      return res.status(400).json({ error: 'Nom et souhait ou média requis.' });
+    }
+
+    const newWish = new Wish({ name, wish, mediaType, mediaUrl });
+    const savedWish = await newWish.save();
+    res.status(201).json(savedWish);
+  } catch (error) {
+    console.error('[createWish error]', error);
+    res.status(500).json({ error: 'Erreur serveur lors de la création du souhait.' });
+  }
+};
+
   
   
 

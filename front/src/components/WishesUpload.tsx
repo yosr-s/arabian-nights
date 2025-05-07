@@ -62,6 +62,7 @@ const WishesUpload = () => {
   const loadWishes = async () => {
     try {
       const data = await fetchWishes();
+      console.log("retrieved wishes=",data)
       setWishes(data);
     } catch (err) {
       toast.error('Could not load wishes.');
@@ -259,15 +260,15 @@ const WishesUpload = () => {
     {item.mediaType === 'photo' ? (
       <>
         <img
-          src={`https://arabian-nights-backend-1t2e.onrender.com${item.mediaUrl}`}
-          alt="wish media"
+        src={item.mediaUrl} 
+        alt="wish media"
           className="rounded max-h-48 w-full object-cover"
         />
      <a
   href="#"
   onClick={(e) => {
     e.preventDefault();
-    downloadFile(`https://arabian-nights-backend-1t2e.onrender.com${item.mediaUrl}`);
+    downloadFile(item.mediaUrl);
   }}
   className="btn btn-primary inline-block px-4 py-2 bg-festival-blue text-white rounded hover:bg-festival-gold transition"
 >
@@ -278,15 +279,15 @@ const WishesUpload = () => {
     ) : item.mediaType === 'video' ? (
       <>
         <video
-          src={`https://arabian-nights-backend-1t2e.onrender.com${item.mediaUrl}`}
-          controls
+        src={item.mediaUrl} 
+        controls
           className="rounded max-h-64 w-full object-cover"
         />
     <a
   href="#"
   onClick={(e) => {
     e.preventDefault();
-    downloadFile(`https://arabian-nights-backend-1t2e.onrender.com${item.mediaUrl}`);
+    downloadFile(item.mediaUrl);
   }}
   className="btn btn-primary inline-block px-4 py-2 bg-festival-blue text-white rounded hover:bg-festival-gold transition"
 >
