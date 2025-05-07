@@ -34,12 +34,8 @@ export const uploadGalleryMedia = async (urls) => {
 
 
 
-//! upload to cloudinary
-/**
- * Upload les fichiers directement vers Cloudinary
- * @param {FormData} formData - contenant les fichiers (clé: 'media')
- * @returns {Promise<Array<string>>} - URLs sécurisées Cloudinary
- */
+//! upload to cloudinary and server
+
 export const uploadToCloudinary = async (formData) => {
   const cloudName = 'dz0figs9c';
   const uploadPreset = 'public_upload';

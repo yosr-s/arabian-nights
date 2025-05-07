@@ -27,6 +27,8 @@ exports.uploadGallery = async (req, res) => {
   }
 };
 */
+//! cloudinary and uploads
+/*
 exports.uploadGallery = async (req, res) => {
   try {
     const files = req.files || [];
@@ -56,7 +58,30 @@ exports.uploadGallery = async (req, res) => {
     console.error('[uploadGallery error]', err);
     res.status(500).json({ error: 'Erreur serveur lors de l\'upload des médias' });
   }
+};*/
+//! only cloudinary
+exports.uploadGallery = async (req, res) => {
+  try {
+    const urls = req.body.media || [];
+
+    if (!urls || urls.length === 0) {
+      return res.status(400).json({ error: 'Aucun média envoyé' });
+    }
+
+    const entries = Array.isArray(urls) ? urls.map(url => ({
+      title: 'Cloudinary Media',
+      mediaType: url.includes('.mp4') ? 'video' : 'photo',
+      mediaUrl: url,
+    })) : [];
+
+    const saved = await Gallery.insertMany(entries);
+    res.status(201).json(saved);
+  } catch (err) {
+    console.error('[uploadGallery error]', err);
+    res.status(500).json({ error: 'Erreur serveur lors de l\'upload des médias' });
+  }
 };
+
 
 
 exports.getGallery = async (req, res) => {

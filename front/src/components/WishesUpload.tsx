@@ -10,6 +10,7 @@ import { uploadWishes, fetchWishes } from '../services/wishesService';
 import { useEffect } from 'react';
 
 
+
 import { 
   Pagination, 
   PaginationContent, 
@@ -20,6 +21,8 @@ import {
 } from '@/components/ui/pagination';
 import { Image, Video } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+
 
 const WishesUpload = () => {
   const [name, setName] = useState('');
@@ -30,6 +33,13 @@ const WishesUpload = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
   const [wishes, setWishes] = useState([]);
+  const [selectedWish, setSelectedWish] = useState(null);
+const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+const [secretInput, setSecretInput] = useState('');
+const [isUnlocked, setIsUnlocked] = useState(false);
+const SECRET_CODE = 'unicornbananas'; 
+
+
 
 
   const downloadFile = async (url: string) => {
@@ -146,7 +156,8 @@ const WishesUpload = () => {
   
   
   return (
-    <section id="wishes" className="py-20 bg-white">
+    <section id="wishes" className="py-20 bg-white"     style={{ backgroundImage: `url('/lovable-uploads/arab-bg-11.png')` }}
+>
       <div className="container mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -244,109 +255,225 @@ const WishesUpload = () => {
           </div>
           
           {/* Display wishes with pagination */}
+          
           <div className="mt-16 space-y-6">
-            <h3 className="font-display text-2xl text-center text-festival-blue mb-8">
-              Recent Wishes
-            </h3>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {currentWishes.map((item) => (
-              <div key={item._id || item.id} className="bg-white p-6 rounded-lg shadow-sm border border-festival-gold/20 flex flex-col items-center text-center space-y-3">
-              <h4 className="font-medium text-festival-blue text-lg">{item.name}</h4>
-              <p className="text-gray-700 text-sm">{item.wish}</p>
-            
-              {item.mediaUrl && (
-  <div className="mt-4 space-y-2">
-    {item.mediaType === 'photo' ? (
-      <>
-        <img
-        src={item.mediaUrl} 
-        alt="wish media"
-          className="rounded max-h-48 w-full object-cover"
-        />
-     <a
-  href="#"
-  onClick={(e) => {
-    e.preventDefault();
-    downloadFile(item.mediaUrl);
-  }}
-  className="btn btn-primary inline-block px-4 py-2 bg-festival-blue text-white rounded hover:bg-festival-gold transition"
->
-  📥 Download
-</a>
+  {!isUnlocked ? (
+    <div className="text-center space-y-4">
+      <h3 className="text-xl font-semibold text-festival-blue">
+        🔐 To preview my <em>top secret</em> wishes...
+      </h3>
+      <p className="text-gray-600 italic">
+        ...type the ultra confidential keyword whispered by a drunken camel on a desert rave night.
+      </p>
+      <Input
+        value={secretInput}
+        onChange={(e) => setSecretInput(e.target.value)}
+        placeholder="Enter the secret word"
+        className="w-full max-w-sm mx-auto border-festival-gold text-center"
+      />
+      <Button
+        onClick={() => {
+          if (secretInput.trim().toLowerCase() === SECRET_CODE) {
+            setIsUnlocked(true);
+            toast.success('🧞 Access granted. Welcome to the magic lamp.');
+          } else {
+            toast.error("❌ That's not it. Try again, brave soul.");
+          }
+        }}
+        className="bg-festival-blue text-white hover:bg-festival-gold"
+      >
+        Unlock Wishes
+      </Button>
+    </div>
+  ) : (
+    <>
+      <h3 className="font-display text-2xl text-center text-festival-blue mb-8">
+        Recent Wishes
+      </h3>
 
-      </>
-    ) : item.mediaType === 'video' ? (
-      <>
-        <video
-        src={item.mediaUrl} 
-        controls
-          className="rounded max-h-64 w-full object-cover"
-        />
-    <a
-  href="#"
-  onClick={(e) => {
-    e.preventDefault();
-    downloadFile(item.mediaUrl);
-  }}
-  className="btn btn-primary inline-block px-4 py-2 bg-festival-blue text-white rounded hover:bg-festival-gold transition"
->
-  📥 Download
-</a>
+      <div className="grid md:grid-cols-2 gap-6">
+        {currentWishes.map((item, index) => (
+          <div
+            key={item._id || item.id}
+            className="bg-white p-6 rounded-lg shadow-sm border border-festival-gold/20 flex flex-col items-center text-center space-y-3"
+          >
+            <h4 className="font-medium text-festival-blue text-lg">{item.name}</h4>
+            <p className="text-gray-700 text-sm">{item.wish}</p>
 
-      </>
-    ) : null}
-  </div>
-)}
-
-
-            </div>
-            
-              ))}
-            </div>
-            
-            {/* Pagination controls */}
-            <Pagination className="mt-10">
-              <PaginationContent>
-                <PaginationItem>
-                  <PaginationPrevious 
-                    href="#" 
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (currentPage > 1) setCurrentPage(currentPage - 1);
-                    }} 
-                    className={currentPage <= 1 ? "pointer-events-none opacity-50" : ""}
-                  />
-                </PaginationItem>
-                
-                {Array.from({ length: totalPages }).map((_, index) => (
-                  <PaginationItem key={index}>
-                    <PaginationLink 
-                      href="#" 
+            {item.mediaUrl && (
+              <div className="mt-4 space-y-2">
+                {item.mediaType === 'photo' ? (
+                  <>
+                    <img
+                      src={item.mediaUrl}
+                      alt="wish media"
+                      className="rounded max-h-48 w-full object-cover"
+                      onClick={() => {
+                        setSelectedWish(item);
+                        setSelectedIndex((currentPage - 1) * itemsPerPage + index);
+                      }}
+                    />
+                    <a
+                      href="#"
                       onClick={(e) => {
                         e.preventDefault();
-                        setCurrentPage(index + 1);
+                        downloadFile(item.mediaUrl);
                       }}
-                      isActive={currentPage === index + 1}
+                      className="btn btn-primary inline-block px-4 py-2 bg-festival-blue text-white rounded hover:bg-festival-gold transition"
                     >
-                      {index + 1}
-                    </PaginationLink>
-                  </PaginationItem>
-                ))}
-                
-                <PaginationItem>
-                  <PaginationNext 
-                    href="#" 
-                    onClick={(e) => {
-                      e.preventDefault();
-                      if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-                    }}
-                    className={currentPage >= totalPages ? "pointer-events-none opacity-50" : ""}
-                  />
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
+                      📥 Download
+                    </a>
+                  </>
+                ) : item.mediaType === 'video' ? (
+                  <>
+                    <video
+                      src={item.mediaUrl}
+                      controls
+                      className="rounded max-h-64 w-full object-cover"
+                      onClick={() => {
+                        setSelectedWish(item);
+                        setSelectedIndex((currentPage - 1) * itemsPerPage + index);
+                      }}
+                    />
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        downloadFile(item.mediaUrl);
+                      }}
+                      className="btn btn-primary inline-block px-4 py-2 bg-festival-blue text-white rounded hover:bg-festival-gold transition"
+                    >
+                      📥 Download
+                    </a>
+                  </>
+                ) : null}
+              </div>
+            )}
           </div>
+        ))}
+      </div>
+
+      {/* MODAL */}
+      <Dialog
+        open={!!selectedWish}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedWish(null);
+            setSelectedIndex(null);
+          }
+        }}
+      >
+        <DialogContent className="sm:max-w-4xl bg-black bg-opacity-90 border-none">
+          {selectedWish && (
+            <div className="p-4">
+              {selectedWish.mediaType === 'photo' ? (
+                <img
+                  src={selectedWish.mediaUrl}
+                  alt={selectedWish.name}
+                  className="w-full h-auto max-h-[70vh] object-contain"
+                />
+              ) : (
+                <video
+                  src={selectedWish.mediaUrl}
+                  controls
+                  autoPlay
+                  className="w-full h-auto max-h-[70vh] object-contain"
+                />
+              )}
+
+              <div className="text-center mt-4 text-white">
+                <h4 className="text-lg font-semibold">{selectedWish.name}</h4>
+                <p className="text-sm mt-1">{selectedWish.wish}</p>
+              </div>
+
+              <div className="flex justify-center mt-4">
+                <Button
+                  onClick={() =>
+                    selectedWish.mediaUrl && downloadFile(selectedWish.mediaUrl)
+                  }
+                  className="bg-festival-gold text-festival-blue hover:bg-festival-gold/80"
+                >
+                  ⬇️ Download
+                </Button>
+              </div>
+
+              <div className="flex justify-between mt-6">
+                <Button
+                  disabled={selectedIndex === 0}
+                  onClick={() => {
+                    const newIndex = selectedIndex! - 1;
+                    if (newIndex >= 0) {
+                      setSelectedIndex(newIndex);
+                      setSelectedWish(wishes[newIndex]);
+                    }
+                  }}
+                >
+                  ← Prev
+                </Button>
+
+                <Button
+                  disabled={selectedIndex === wishes.length - 1}
+                  onClick={() => {
+                    const newIndex = selectedIndex! + 1;
+                    if (newIndex < wishes.length) {
+                      setSelectedIndex(newIndex);
+                      setSelectedWish(wishes[newIndex]);
+                    }
+                  }}
+                >
+                  Next →
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Pagination */}
+      <Pagination className="mt-10">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                if (currentPage > 1) setCurrentPage(currentPage - 1);
+              }}
+              className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
+            />
+          </PaginationItem>
+
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <PaginationItem key={index}>
+              <PaginationLink
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentPage(index + 1);
+                }}
+                isActive={currentPage === index + 1}
+              >
+                {index + 1}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+
+          <PaginationItem>
+            <PaginationNext
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+              }}
+              className={currentPage >= totalPages ? 'pointer-events-none opacity-50' : ''}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </>
+  )}
+</div>
+
         </motion.div>
       </div>
       

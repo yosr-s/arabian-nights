@@ -4,7 +4,9 @@ const router = express.Router();
 const upload = require('../services/uploadService');
 const { uploadGallery, getGallery } = require('../controllers/galleryController');
 
-router.post('/', upload.array('media', 10), uploadGallery); // jusqu'à 10 fichiers
+//!router.post('/', upload.array('media', 10), uploadGallery); // jusqu'à 10 fichiers
+router.post('/', uploadGallery); // plus besoin de multer ici
+
 router.get('/', getGallery);
 
 module.exports = router;

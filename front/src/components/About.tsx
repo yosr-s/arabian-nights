@@ -4,7 +4,10 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-white decor-pattern">
+    <section id="about" className="py-20 bg-white decor-pattern"   
+    style={{ backgroundImage: `url('/lovable-uploads/arab-bg-11.png')` }}
+>
+      
       <div className="container mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
