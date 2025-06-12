@@ -44,7 +44,7 @@ const About = () => {
                 </svg>
               </div>
               <h3 className="font-display text-lg font-semibold text-festival-blue mb-2">Cultural Feast</h3>
-              <p className="text-gray-600">Authentic cuisine and refreshments for a complete sensory experience</p>
+              <p className="text-gray-600">Authentic cuisine spices and costumes for a complete sensory experience</p>
             </div>
             
             <div className="bg-festival-peach bg-opacity-30 p-6 rounded-lg shadow-sm">
