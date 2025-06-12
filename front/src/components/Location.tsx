@@ -34,7 +34,7 @@ const Location: React.FC = () => {
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold text-festival-gold mb-4">Location</h2>
           <p className="text-white text-lg max-w-2xl mx-auto">
-            Join us at the historic Bismarck Tower in Łagiewniki for an unforgettable festival experience.
+            Join us at the historic Górka Jurka in Janówek for an unforgettable festival experience.
           </p>
         </motion.div>
 
@@ -72,7 +72,7 @@ const Location: React.FC = () => {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>Łagiewniki, Dolnośląskie, Poland</span>
+                <span>Górka Jurka, Janówek , Poland</span>
               </div>
               <div className="flex items-start">
                 <svg
@@ -155,7 +155,7 @@ const Location: React.FC = () => {
               />
               <Marker position={position}>
                 <Popup>
-                  Arabian Night & Arabian Day Festival <br /> Wieża Bismarcka, Łagiewniki
+                  Arabian Night & Arabian Day Festival <br /> Górka Jurka, Janówek
                 </Popup>
               </Marker>
             </MapContainer>
