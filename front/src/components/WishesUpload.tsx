@@ -37,7 +37,7 @@ const WishesUpload = () => {
 const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 const [secretInput, setSecretInput] = useState('');
 const [isUnlocked, setIsUnlocked] = useState(false);
-const SECRET_CODE = 'unicornbananas'; 
+const SECRET_CODE = 'PstrągTęczowy'; 
 
 
 
