@@ -40,6 +40,15 @@ const Support = () => {
 
 
             <div className="text-center">
+              <p className="text-festival-blue font-semibold mb-2">Revolut Link:</p>
+               <a 
+                  href="https://revolut.me/danielbj4" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-festival-gold underline hover:text-festival-blue"
+                >
+                  https://revolut.me/danielbj4
+                </a>
               <p className="text-festival-blue font-semibold mb-2">Revolut QR Code:</p>
               <img 
                 src="/lovable-uploads/revolut-qr.jpeg" 
