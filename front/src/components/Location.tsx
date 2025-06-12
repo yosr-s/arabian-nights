@@ -46,9 +46,9 @@ const Location: React.FC = () => {
           className="grid md:grid-cols-2 gap-8 items-center"
         >
           <div className="bg-festival-blue/30 backdrop-blur-sm p-6 rounded-lg">
-            <h3 className="text-festival-gold text-2xl font-display font-bold mb-4">Wieża Bismarcka, Łagiewniki</h3>
+            <h3 className="text-festival-gold text-2xl font-display font-bold mb-4">Górka Jurka, Janówek</h3>
             <p className="text-white mb-4">
-              The Bismarck Tower in Łagiewniki offers a unique setting surrounded by nature, creating the perfect atmosphere for our Arabian-themed festival.
+             Górka Jurka in Janówek offers a unique setting surrounded by nature, creating the perfect atmosphere and view at Ślęża Mountain at sunset .
             </p>
             <div className="space-y-3 text-white">
               <div className="flex items-start">
@@ -89,7 +89,7 @@ const Location: React.FC = () => {
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span>Festival opens: Friday, May 16 at 5:00 PM</span>
+                <span>Festival opens: Saturday, June 14 at noon.</span>
               </div>
               <div className="flex items-start">
                 <svg
