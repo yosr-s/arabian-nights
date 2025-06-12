@@ -24,10 +24,18 @@ const Support = () => {
           </p>
 
           <div className="flex flex-col items-center space-y-4 mt-8">
-            <div className="bg-white shadow-md px-6 py-4 rounded-lg">
-              <p className="text-festival-blue font-semibold">BLIK number:</p>
-              <p className="text-lg font-bold text-festival-gold mt-1">609 160 689</p>
+          <div className="bg-white shadow-md px-6 py-4 rounded-lg">
+            <p className="text-festival-blue font-semibold">BLIK number:</p>
+            <div className="flex items-center justify-center mt-1 space-x-3">
+              <p className="text-lg font-bold text-festival-gold">609 160 689</p>
+              <img
+                src="/lovable-uploads/Blik_logo.jpg"
+                alt="BLIK Logo"
+                className="h-6 w-auto"
+              />
             </div>
+          </div>
+
 
             <div className="text-center">
               <p className="text-festival-blue font-semibold mb-2">Revolut QR Code:</p>
