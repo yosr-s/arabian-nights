@@ -48,7 +48,7 @@ const Location: React.FC = () => {
           <div className="bg-festival-blue/30 backdrop-blur-sm p-6 rounded-lg">
             <h3 className="text-festival-gold text-2xl font-display font-bold mb-4">Górka Jurka, Janówek</h3>
             <p className="text-white mb-4">
-             Górka Jurka in Janówek offers a unique setting surrounded by nature, creating the perfect atmosphere and view at Ślęża Mountain at sunset .
+             Górka Jurka in Janówek offers a unique setting surrounded by nature, creating the perfect atmosphere and view at Ślęża Mountain at sunset.
             </p>
             <div className="space-y-3 text-white">
               <div className="flex items-start">
