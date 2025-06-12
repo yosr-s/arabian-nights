@@ -49,10 +49,10 @@ const Hero = () => {
             className="bg-festival-navy/30 backdrop-blur-sm p-6 rounded-lg inline-block"
           >
             <p className="text-white text-lg mb-2">
-              Fri, May 16 at 5:00 PM GMT+2 - Sun, May 18 at 8:00 PM GMT+2
+              Saturday, June 14 at noon
             </p>
             <p className="text-festival-gold font-medium">
-              Wieża Bismarcka, Łagiewniki, Dolnośląskie
+              Górka Jurka, Janówek
             </p>
           </motion.div>
         </motion.div>
