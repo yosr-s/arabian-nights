@@ -26,7 +26,7 @@ const Support = () => {
           <div className="flex flex-col items-center space-y-4 mt-8">
             <div className="bg-white shadow-md px-6 py-4 rounded-lg">
               <p className="text-festival-blue font-semibold">BLIK number:</p>
-              <p className="text-lg font-bold text-festival-gold mt-1">123 456 789</p>
+              <p className="text-lg font-bold text-festival-gold mt-1">609 160 689</p>
             </div>
 
             <div className="text-center">
