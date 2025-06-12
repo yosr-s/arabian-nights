@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
 
 const Location: React.FC = () => {
   // Coordinates for Wieża Bismarcka, Łagiewniki
-  const position: LatLngExpression = [51.1789, 16.9896];
+  const position: LatLngExpression = [50.832778, 16.831417];
 
   // Google Maps URL with coordinates
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${position[0]},${position[1]}`;
