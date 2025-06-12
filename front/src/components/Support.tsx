@@ -32,7 +32,7 @@ const Support = () => {
             <div className="text-center">
               <p className="text-festival-blue font-semibold mb-2">Revolut QR Code:</p>
               <img 
-                src="/images/revolut-qr.png" 
+                src="/lovable-uploads/revolut-qr.jpeg" 
                 alt="Revolut QR code" 
                 className="w-40 h-40 mx-auto border border-gray-300 rounded-md shadow-sm" 
               />
