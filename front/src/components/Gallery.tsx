@@ -27,7 +27,7 @@ const Gallery = ({ refresh }) => {
 
   const [secretCode, setSecretCode] = useState('');
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const SECRET_WORD = 'unicornbananas'; // à adapter si tu veux un autre mot de passe
+  const SECRET_WORD = 'PstrągTęczowy69'; // à adapter si tu veux un autre mot de passe
   
 
   const downloadFile = (url: string) => {
