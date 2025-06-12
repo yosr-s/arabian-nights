@@ -27,7 +27,7 @@ const Support = () => {
             <div className="bg-white shadow-md px-6 py-4 rounded-lg w-full max-w-xs">
                 <p className="text-festival-blue font-semibold text-center">BLIK number:</p>
                 <p className="text-lg font-bold text-festival-gold text-center mt-1">
-                  609 160 689
+                  609 160 589
                 </p>
                 <div className="mt-3">
                   <img
