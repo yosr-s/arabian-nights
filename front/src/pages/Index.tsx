@@ -10,6 +10,9 @@ import PhotoUpload from '@/components/PhotoUpload';
 import Gallery from '@/components/Gallery';
 import Footer from '@/components/Footer';
 import Support from '@/components/Support';
+import FestMap from "@/components/FestMap"; 
+import DJLineup from "@/components/DJLineup";
+
 
 const Index = () => {
   const [refreshGallery, setRefreshGallery] = useState(false);
@@ -29,6 +32,8 @@ const Index = () => {
         <Hero />
         <About />
         <Location />
+        <FestMap />
+        <DJLineup />
         <WishesUpload />
         <PhotoUpload onUploadSuccess={handleUploadSuccess} />
         <Gallery refresh={refreshGallery} />

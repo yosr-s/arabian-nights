@@ -29,6 +29,8 @@ const Navigation = () => {
         <div className="hidden md:flex gap-8">
           <a href="#about" className="text-white hover:text-festival-gold transition-colors">About</a>
           <a href="#location" className="text-white hover:text-festival-gold transition-colors">Location</a>
+          <a href="#festmap" className="text-white hover:text-festival-gold transition-colors">Festival Map</a>
+          <a href="#djlineup" className="text-white hover:text-festival-gold transition-colors">DJ Lineup</a>
           <a href="#wishes" className="text-white hover:text-festival-gold transition-colors">Wishes</a>
           <a href="#gallery" className="text-white hover:text-festival-gold transition-colors">Gallery</a>
           <a href="#support" className="text-white hover:text-festival-gold transition-colors">Support</a>
@@ -50,6 +52,8 @@ const Navigation = () => {
         <div className="md:hidden bg-festival-navy bg-opacity-95 px-6 pt-4 pb-6 space-y-4 text-center">
           <a href="#about" className="block text-white hover:text-festival-gold">About</a>
           <a href="#location" className="block text-white hover:text-festival-gold">Location</a>
+          <a href="#festmap" className="block text-white hover:text-festival-gold">Festival Map</a>
+          <a href="#djlineup" className="block text-white hover:text-festival-gold">DJ Lineup</a>
           <a href="#wishes" className="block text-white hover:text-festival-gold">Wishes</a>
           <a href="#gallery" className="block text-white hover:text-festival-gold">Gallery</a>
           <a href="#support" className="block text-white hover:text-festival-gold">Support</a>
