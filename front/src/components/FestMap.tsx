@@ -33,7 +33,7 @@ const FestMap: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl text-festival-blue mb-6">
-            Festival Map
+            Mbappe Mapakempu
           </h2>
         </motion.div>
 
