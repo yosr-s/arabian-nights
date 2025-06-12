@@ -273,7 +273,7 @@ const SECRET_CODE = 'PstrągTęczowy';
       />
       <Button
         onClick={() => {
-          if (secretInput.trim().toLowerCase() === SECRET_CODE) {
+          if (secretInput.trim() === SECRET_CODE) {
             setIsUnlocked(true);
             toast.success('🧞 Access granted. Welcome to the magic lamp.');
           } else {
