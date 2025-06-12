@@ -97,7 +97,7 @@ const Gallery = ({ refresh }) => {
     />
     <Button 
       onClick={() => {
-        if (secretCode.trim().toLowerCase() === SECRET_WORD) {
+        if (secretCode.trim() === SECRET_WORD) {
           setIsUnlocked(true);
         } else {
           toast.error("Nope. That’s not it. Try harder. 😉");
