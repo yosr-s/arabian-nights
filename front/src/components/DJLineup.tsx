@@ -50,8 +50,8 @@ const DJLineup: React.FC = () => {
           {/* Description à gauche */}
           <div className="text-white space-y-6 order-2 md:order-1">
             <p className="text-lg text-gray-200 leading-relaxed">
-              From underground techno to soulful house, our lineup is curated to elevate your spirit and move your feet.
-              Whether you're vibing under the stars or headbanging at dawn, these DJs will keep your energy soaring.
+             From indie dance techno to soulful melodic house, our music sets will be curated to elevate your spirit and move your feet. Whether you're jumping under the stars or vibing at dawn, these DJs will keep your energy soaring.
+
             </p>
 
             <p className="text-sm text-festival-gold italic font-bold">
